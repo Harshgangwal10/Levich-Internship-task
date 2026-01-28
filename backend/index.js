@@ -10,9 +10,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
+app.get("/", (req, res) => {
+  res.send("Backend is running");
+});
+
 app.use("/api/items", itemRoutes);
 
 const httpServer = createServer(app);
+
 const io = new Server(httpServer, {
   cors: {
     origin: "*",
@@ -20,9 +26,9 @@ const io = new Server(httpServer, {
   }
 });
 
-io.on("connection", socket => auctionSocket(io, socket));
+io.on("connection", (socket) => auctionSocket(io, socket));
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 httpServer.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
