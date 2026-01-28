@@ -10,6 +10,10 @@ A real-time auction platform where users can bid on items in real-time using Web
 - **Responsive Design**: Works on desktop and mobile devices
 - **Bid Notifications**: Get notified when you're outbid or someone bids on an item
 
+## Screenshot
+<img width="1918" height="919" alt="image" src="https://github.com/user-attachments/assets/d4a0f177-2344-4a06-b73f-0c97fa3bf380" />
+
+
 ## Tech Stack
 
 ### Frontend
