@@ -8,8 +8,17 @@ import itemRoutes from "./src/routes/itemsRoutes.js";
 import { auctionSocket } from "./src/sockets/auction.js";
 
 const app = express();
+
+// Determine frontend URL based on environment
+const isDevelopment = process.env.NODE_ENV !== "production";
+const frontendUrl = isDevelopment
+  ? process.env.FRONTEND_URL_LOCAL || "http://localhost:5173"
+  : process.env.FRONTEND_URL_PRODUCTION || "http://localhost:5173";
+
+console.log("Frontend URL:", frontendUrl);
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL
+  origin: frontendUrl
 }));
 app.use(express.json());
 
