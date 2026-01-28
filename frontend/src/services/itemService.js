@@ -13,7 +13,6 @@ export const fetchItems = async () => {
   }
 
   console.log("Backend URL:", backendUrl);
-  console.log("Environment: ", isDevelopment ? "Development" : "Production");
 
   try {
     const res = await fetch(`${backendUrl}/api/items`, {
@@ -23,20 +22,12 @@ export const fetchItems = async () => {
     });
 
     const contentType = res.headers.get('content-type');
-    console.log("Response Content-Type:", contentType);
 
     if (!res.ok) {
       const text = await res.text();
-      console.error("Response status:", res.status, "Body:", text);
       throw new Error(`Failed to fetch items: ${res.status} - ${text.substring(0, 100)}`);
     }
 
-    // Check if response is JSON
-    if (!contentType || !contentType.includes('application/json')) {
-      const text = await res.text();
-      console.error("Expected JSON but got:", contentType, text.substring(0, 200));
-      throw new Error(`Invalid response format: ${contentType}. Expected application/json`);
-    }
 
     return res.json();
   } catch (error) {

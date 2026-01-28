@@ -9,7 +9,6 @@ import { auctionSocket } from "./src/sockets/auction.js";
 
 const app = express();
 
-// Determine frontend URL based on environment
 const isDevelopment = process.env.NODE_ENV !== "production";
 const frontendUrl = isDevelopment
   ? process.env.FRONTEND_URL_LOCAL || "http://localhost:5173"

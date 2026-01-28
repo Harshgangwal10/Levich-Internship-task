@@ -41,7 +41,7 @@ export const useAuctionSocket = (currentUserId, setItems) => {
       setItems((prev) =>
         prev.map((item) => {
           if (item.id === itemId) {
-            // Check if current user was the highest bidder and is now outbid
+
             if (item.highestBidder === currentUserId && highestBidder !== currentUserId) {
               setOutbidItems((prev) => new Set(prev).add(itemId));
 
