@@ -3,13 +3,13 @@ export const fetchItems = async () => {
   
   let backendUrl = isDevelopment
     ? import.meta.env.VITE_BACKEND_URL_LOCAL
-    : (import.meta.env.VITE_BACKEND_URL_PRODUCTION || 'https://levich-internship-task.onrender.com');
+    : (import.meta.env.VITE_BACKEND_URL_PRODUCTION || 'https://levich-internship-task-backend.onrender.com');
 
   
   if (!backendUrl) {
     backendUrl = window.location.hostname === "localhost" 
       ? "http://localhost:3000"
-      : 'https://levich-internship-task.onrender.com';
+      : 'https://levich-internship-task-backend.onrender.com';
   }
 
   console.log("Backend URL:", backendUrl);

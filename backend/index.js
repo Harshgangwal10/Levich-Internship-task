@@ -18,7 +18,7 @@ const frontendUrl = isDevelopment
 console.log("Frontend URL:", frontendUrl);
 
 app.use(cors({
-  origin: [frontendUrl, "http://localhost:5173", "http://localhost:3000"],
+  origin: [frontendUrl, "http://localhost:5173"],
   credentials: true
 }));
 app.use(express.json());
