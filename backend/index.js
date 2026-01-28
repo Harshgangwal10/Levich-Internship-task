@@ -9,7 +9,7 @@ import { auctionSocket } from "./src/sockets/auction.js";
 
 const app = express();
 app.use(cors({
-  origin: process.env.FRONTEND_URL || "http://localhost:5173"
+  origin: process.env.FRONTEND_URL
 }));
 app.use(express.json());
 
@@ -31,7 +31,7 @@ const io = new Server(httpServer, {
 
 io.on("connection", (socket) => auctionSocket(io, socket));
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 httpServer.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
