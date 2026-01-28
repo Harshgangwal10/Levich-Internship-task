@@ -1,13 +1,14 @@
+import axios from "axios";
+
 export const fetchItems = async () => {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  console.log("VITE_BACKEND_URL:", backendUrl);
 
-  console.log("VITE_BACKEND_URL", import.meta.env.VITE_BACKEND_URL);
-
-  const res = await fetch(`${backendUrl}/api/items`);
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch items");
+  try {
+    const res = await axios.get(`${backendUrl}/api/items`);
+    return res.data;
+  } catch (err) {
+    console.error("Axios error:", err);
+    throw err;
   }
-
-  return res.json();
 };
